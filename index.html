@@ -3,104 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Mascotas </title>
+    <title>Tienda de Mascotas</title>
     <link rel="manifest" href="/manifest.json">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7fa;
-            color: #333;
-        }
-
-        header {
-            background: #ff6f61;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-        }
-
-        section {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 20px;
-        }
-
-        .product-card {
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 10px;
-            width: 250px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .product-card h3 {
-            margin: 10px 0;
-            font-size: 1.5em;
-        }
-
-        .product-card p {
-            font-size: 1em;
-            color: #777;
-            margin-bottom: 10px;
-        }
-
-        .product-card button {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            cursor: pointer;
-            font-size: 1.1em;
-            border-radius: 0 0 8px 8px;
-            transition: background-color 0.3s;
-        }
-
-        .product-card button:hover {
-            background-color: #ff3d2e;
-        }
-
-        #sendNotification {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #sendNotification:hover {
-            background-color: #ff3d2e;
-        }
+        /* Estilos previos */
     </style>
 </head>
 <body>
-
 <header>
     <h1>Tienda de Mascotas: Chechy </h1>
     <p>¡Todo lo que tu mascota necesita!</p>
@@ -111,7 +20,7 @@
         <img src="premium_photo-1676389281733-aaefab0e7907.jpeg" alt="Comida para perros">
         <h3>Comida para Perros</h3>
         <p>Comida nutritiva para tu perro de todas las edades.</p>
-        <button>Ver Producto</button>
+        <button onclick="location.href='perros.html'">Ver Productos para Perros</button>
     </div>
     
     <div class="product-card">
@@ -129,9 +38,8 @@
     </div>
 </section>
 
-<button id="sendNotification">Mensaje del Dia!!</button>
+<button id="sendNotification">Mensaje del Día</button>
 
 <script src="script.js"></script>
-
 </body>
 </html>
