@@ -7,7 +7,7 @@ document.getElementById('sendNotification').addEventListener('click', async () =
             registration.showNotification('¡Aquí Chechy🐶 desde la Tienda de Mascotas!', {
                 body: '¡Recuerda comprar todo lo necesario para tu mascota!🐱🐶',
                 icon: 'perro.png',  // Ruta local al icono en la raíz
-                badge: 'perro.png', // Si tienes un badge puedes especificar aquí
+                badge: 'download.jpeg', // Si tienes un badge puedes especificar aquí
             });
         }
     }
