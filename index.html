@@ -44,39 +44,51 @@
     </main>
 
     <script>
-        // Registro del Service Worker
+        // Registrar el Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js')
-                .then(reg => console.log('Service Worker registrado:', reg.scope))
+                .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
                 .catch(err => console.error('Error al registrar el Service Worker:', err));
         }
 
-        // Botón para enviar notificaciones
+        // Botón para enviar la notificación
         document.getElementById('sendNotification').addEventListener('click', async () => {
             if (!('Notification' in window)) {
-                alert('Notificaciones no soportadas en este navegador.');
+                alert('Tu navegador no soporta notificaciones.');
                 return;
             }
 
             if (Notification.permission !== 'granted') {
-                alert('Por favor, concede permisos para las notificaciones.');
+                alert('Por favor, otorga permiso para las notificaciones.');
                 return;
             }
 
+            // Mostrar la notificación
             if ('serviceWorker' in navigator) {
                 try {
                     const reg = await navigator.serviceWorker.ready;
-                    reg.showNotification('Tienda de Mascotas', {
-                        body: '¡Tenemos ofertas especiales para tu mascota hoy!',
-                        icon: 'https://via.placeholder.com/192', // Ícono público genérico
-                        badge: 'https://via.placeholder.com/72' // Ícono pequeño opcional
+                    reg.showNotification('Oferta Especial', {
+                        body: '¡Tenemos descuentos en productos para tu mascota!',
+                        icon: 'https://via.placeholder.com/192',
+                        badge: 'https://via.placeholder.com/72',
+                        vibrate: [100, 50, 100], // Vibración (para móviles)
+                        actions: [
+                            {
+                                action: 'comprar',
+                                title: 'Comprar Ahora',
+                                icon: 'https://via.placeholder.com/72'
+                            },
+                            {
+                                action: 'cerrar',
+                                title: 'Cerrar',
+                                icon: 'https://via.placeholder.com/72'
+                            }
+                        ]
                     });
-                    console.log('Notificación enviada.');
+                    console.log('Notificación enviada correctamente.');
                 } catch (err) {
                     console.error('Error al enviar la notificación:', err);
                 }
-            } else {
-                alert('Service Worker no está disponible.');
             }
         });
     </script>
