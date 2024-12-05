@@ -47,21 +47,36 @@
         // Registro del Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js')
-                .then(reg => console.log('Service Worker registrado:', reg))
+                .then(reg => console.log('Service Worker registrado:', reg.scope))
                 .catch(err => console.error('Error al registrar el Service Worker:', err));
         }
 
         // Botón para enviar notificaciones
-        document.getElementById('sendNotification').addEventListener('click', () => {
-            if ('serviceWorker' in navigator && 'PushManager' in window) {
-                navigator.serviceWorker.ready.then(reg => {
+        document.getElementById('sendNotification').addEventListener('click', async () => {
+            if (!('Notification' in window)) {
+                alert('Notificaciones no soportadas en este navegador.');
+                return;
+            }
+
+            if (Notification.permission !== 'granted') {
+                alert('Por favor, concede permisos para las notificaciones.');
+                return;
+            }
+
+            if ('serviceWorker' in navigator) {
+                try {
+                    const reg = await navigator.serviceWorker.ready;
                     reg.showNotification('Tienda de Mascotas', {
                         body: '¡Tenemos ofertas especiales para tu mascota hoy!',
-                        icon: 'icon.png',
+                        icon: 'https://via.placeholder.com/192', // Ícono público genérico
+                        badge: 'https://via.placeholder.com/72' // Ícono pequeño opcional
                     });
-                });
+                    console.log('Notificación enviada.');
+                } catch (err) {
+                    console.error('Error al enviar la notificación:', err);
+                }
             } else {
-                alert('Notificaciones push no son compatibles con este navegador.');
+                alert('Service Worker no está disponible.');
             }
         });
     </script>
