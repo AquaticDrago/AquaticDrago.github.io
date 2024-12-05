@@ -15,13 +15,13 @@ if ('serviceWorker' in navigator) {
 }
 
 async function addToCart(productName) {
-    console.log(`${productName} agregado al carrito.`);
+    console.log(`${productName} se ha unido al equipo!!🐕.`);
     const permissionGranted = await requestNotificationPermission();
 
     if (permissionGranted && 'serviceWorker' in navigator) {
         const registration = await navigator.serviceWorker.ready;
-        registration.showNotification('Producto Agregado', {
-            body: `Se ha agregado ${productName} al carrito 🐾`,
+        registration.showNotification('Gracias por tu Amabilidad', {
+            body: `${productName} te lo agradecería toda su vida 🐾`,
             icon: 'perro.png',
             badge: 'https://img.icons8.com/ios/452/dog.png',
         });
