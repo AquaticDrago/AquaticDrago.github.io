@@ -1,16 +1,11 @@
-self.addEventListener('install', event => {
-    console.log('Service Worker instalado.');
-    event.waitUntil(self.skipWaiting());
-});
+self.addEventListener('push', event => {
+    const options = {
+        body: event.data.text(),
+        icon: 'perro.png',  // Ruta al icono en la raíz
+        badge: 'images/notification_badge.png', // Si tienes un badge, especifica la ruta aquí
+    };
 
-self.addEventListener('activate', event => {
-    console.log('Service Worker activado.');
-    event.waitUntil(self.clients.claim());
-});
-
-self.addEventListener('notificationclick', event => {
-    event.notification.close();
     event.waitUntil(
-        clients.openWindow('https://vercel.com/') // URL a abrir al hacer clic
+        self.registration.showNotification('Tienda de Mascotas', options)
     );
 });
